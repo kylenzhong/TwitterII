@@ -10,12 +10,14 @@ public class Tweet {
     String text;
     String createdAt;
     User user;
+    Long id;
 
     public static Tweet getTweet (JSONObject object) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.text = object.getString("text");
         tweet.createdAt = object.getString("created_at");
         tweet.user = User.getUser((object.getJSONObject("user")));
+        tweet.id = object.getLong("id");
         return tweet;
     }
 
@@ -38,5 +40,9 @@ public class Tweet {
 
     public User getUser() {
         return user;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

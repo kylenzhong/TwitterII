@@ -54,21 +54,25 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView profileImage;
-        TextView handleText;
+        TextView nameText;
         TextView tweetText;
         TextView timeText;
+        TextView handleText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileImage = itemView.findViewById(R.id.profileImage);
-            handleText = itemView.findViewById(R.id.handleText);
+            nameText = itemView.findViewById(R.id.nameText);
             tweetText = itemView.findViewById(R.id.tweetText);
             timeText = itemView.findViewById(R.id.timeText);
+            handleText = itemView.findViewById(R.id.handleText);
         }
 
         public void bind(Tweet tweet) {
             tweetText.setText(tweet.getText());
-            handleText.setText(tweet.getUser().getHandle());
+            nameText.setText(tweet.getUser().getName());
+            handleText.setText("@" + tweet.getUser().getHandle());
+
             try {
                 timeText.setText(TimeFormatter.getTimeDifference(tweet.getCreateAt()));
             } catch (ParseException e) {

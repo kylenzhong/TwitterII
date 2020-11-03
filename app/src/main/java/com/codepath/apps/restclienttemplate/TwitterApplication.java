@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.View;
 
 import androidx.room.Room;
 
@@ -30,6 +31,7 @@ public class TwitterApplication extends Application {
 
         // use chrome://inspect to inspect your SQL database
         Stetho.initializeWithDefaults(this);
+
     }
 
     public static TwitterClient getRestClient(Context context) {
