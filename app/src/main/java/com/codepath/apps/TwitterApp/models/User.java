@@ -1,12 +1,17 @@
-package com.codepath.apps.restclienttemplate.models;
+package com.codepath.apps.TwitterApp.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 public class User {
     String name;
     String handle;
     String imageURL;
+
+    public User(){
+    }
 
     public static User getUser(JSONObject object) throws JSONException {
         User user = new User();

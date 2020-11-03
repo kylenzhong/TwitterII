@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.TwitterApp;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.apps.restclienttemplate.models.TimeFormatter;
-import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.TwitterApp.models.TimeFormatter;
+import com.codepath.apps.TwitterApp.models.Tweet;
 
 import java.text.ParseException;
 import java.util.List;

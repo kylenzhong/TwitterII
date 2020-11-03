@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codepath.apps.restclienttemplate"
+    package="com.codepath.apps.TwitterApp"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -8,15 +8,15 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".TwitterApplication"
+        android:name="com.codepath.apps.TwitterApp.TwitterApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostActivity"></activity>
-        <activity android:name=".StoryActivity" />
+        <activity android:name="com.codepath.apps.TwitterApp.PostActivity"></activity>
+        <activity android:name="com.codepath.apps.TwitterApp.StoryActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.codepath.apps.TwitterApp.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>

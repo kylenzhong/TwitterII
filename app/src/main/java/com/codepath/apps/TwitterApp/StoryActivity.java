@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.TwitterApp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,16 +13,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.codepath.apps.restclienttemplate.models.EndlessRecyclerViewScrollListener;
-import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.TwitterApp.models.EndlessRecyclerViewScrollListener;
+import com.codepath.apps.TwitterApp.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
-import com.github.scribejava.apis.TwitterApi;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +33,7 @@ public class StoryActivity extends AppCompatActivity {
     RecyclerView rv;
     SwipeRefreshLayout swipeContainer;
     private EndlessRecyclerViewScrollListener scrollListener;
-    public static final int requestCode = 100;
+    public static final int  postRequestCode = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +75,12 @@ public class StoryActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == postRequestCode && resultCode == RESULT_OK){
+            Tweet tweet = (Tweet) Parcels.unwrap(data.getParcelableExtra("tweet"));
+            tweets.add(0, tweet);
+            adapter.notifyDataSetChanged();
+            rv.smoothScrollToPosition(0);
+        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -92,7 +95,7 @@ public class StoryActivity extends AppCompatActivity {
         //Toast.makeText(this, "this is the id: " + item.getItemId(), Toast.LENGTH_SHORT).show();
         if(item.getItemId() == R.id.composeButton){
             Intent i = new Intent(this, PostActivity.class);
-            startActivityForResult(i, requestCode);
+            startActivityForResult(i,  postRequestCode);
         }
         return true;
     }

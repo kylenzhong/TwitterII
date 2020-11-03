@@ -1,19 +1,21 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.TwitterApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.TwitterApp.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import okhttp3.Headers;
 
@@ -35,7 +37,7 @@ public class PostActivity extends AppCompatActivity {
         tweetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), postText.getText().toString(), Toast.LENGTH_SHORT).show();
+
                 if(postText.getText().length() == 0){
                     Toast.makeText(getApplicationContext(), "The text entered is too short", Toast.LENGTH_SHORT).show();
                 }
@@ -46,17 +48,19 @@ public class PostActivity extends AppCompatActivity {
                 tc.post(postText.getText().toString(), new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
+                        Toast.makeText(getApplicationContext(), postText.getText().toString(), Toast.LENGTH_SHORT).show();
                         Log.i(tag, "sucessfully posted");
-                        /*try {
-                            Tweet tweet = Tweet.getTweet(json.jsonObject);
+                         try {
+                           Tweet tweet = Tweet.getTweet(json.jsonObject);
                             Intent i = new Intent();
-                            i.putExtra("tweet", tweet);
-                            finishActivity(getIntent().reques);
+                            i.putExtra("tweet", Parcels.wrap(tweet));
+                            setResult(RESULT_OK, i);
+                            finish();
 
                         } catch (JSONException e) {
                             Log.e(tag, "oops", e);
-                        }*/
-                    }
+                        }
+                    };
 
                     @Override
                     public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
