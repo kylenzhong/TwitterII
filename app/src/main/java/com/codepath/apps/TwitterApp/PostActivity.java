@@ -23,6 +23,7 @@ public class PostActivity extends AppCompatActivity {
 
     Button tweetButton;
     EditText postText;
+    EditText charCount;
     public static final String requestURL = "https://api.twitter.com/1.1/statuses/update.json";
     public static final String tag = "PostActivity";
     TwitterClient tc;
@@ -33,6 +34,8 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
         tweetButton = findViewById(R.id.tweetButton);
         postText = findViewById(R.id.postText);
+        //charCount = findViewById(R.id.charCount);
+        //charCount.setText("140 characters");
         tc = TwitterApplication.getRestClient(this);
         tweetButton.setOnClickListener(new View.OnClickListener() {
             @Override

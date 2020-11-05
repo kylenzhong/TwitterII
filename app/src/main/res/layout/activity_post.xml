@@ -29,4 +29,15 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="Tweet" />
+
+    <TextView
+        android:id="@+id/charCount "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postText"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@+id/tweetButton"
+        tools:text="140 characters" />
+
 </RelativeLayout>
